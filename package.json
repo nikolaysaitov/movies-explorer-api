@@ -17,5 +17,9 @@
   "bugs": {
     "url": "https://github.com/nikolaysaitov/movies-explorer-api/issues"
   },
-  "homepage": "https://github.com/nikolaysaitov/movies-explorer-api#readme"
+  "homepage": "https://github.com/nikolaysaitov/movies-explorer-api#readme",
+  "dependencies": {
+    "mongoose": "^6.5.0",
+    "validator": "^13.7.0"
+  }
 }
