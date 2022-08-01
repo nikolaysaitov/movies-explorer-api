@@ -27,6 +27,12 @@ app.use(cookieParser());
 
 app.use(requestLogger); // подключаем логгерзапросов
 
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер вот-вот упадёт');
+  }, 0);
+});
+
 app.post('/signup', celebrate({
   body: Joi.object().keys({
     name: Joi.string().min(2).max(30),
