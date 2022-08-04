@@ -9,7 +9,7 @@ const bodyParser = require('body-parser');
 const { errors } = require('celebrate');
 const helmet = require('helmet');
 const cookieParser = require('cookie-parser');
-const { dataMovies } = require('./utils/constants');
+const { addressMongoDB } = require('./utils/constants');
 const cors = require('./middlewares/cors');
 const routes = require('./routes/index');
 const NotFoundError = require('./errors/not-found-err_404');
@@ -17,7 +17,7 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const app = express();
 // подключаемся к серверу mong
-mongoose.connect(dataMovies);
+mongoose.connect(addressMongoDB);
 // подключаем мидлвары, роуты и всё остальное...
 app.use(helmet());
 app.use(bodyParser.json());
