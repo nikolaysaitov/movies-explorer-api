@@ -3,7 +3,7 @@ const {
   DATA_BASE = 'mongodb://localhost:27017/kino',
 } = process.env;
 
-const addressMongoDB = NODE_ENV === 'production' ? DATA_BASE : 'mongodb://localhost:27017/moviedb';
+const addressMongoDB = NODE_ENV === 'production' ? DATA_BASE : 'mongodb://localhost:27017/kino';
 
 module.exports = {
   addressMongoDB,
