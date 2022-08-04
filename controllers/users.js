@@ -69,6 +69,9 @@ module.exports.updateUser = (req, res, next) => {
       if (err.name === 'ValidationError') {
         return next(new ValidError('Введены некорректные данные'));
       }
+      if (err.code === 11000) {
+        next(new ConflictError('Это чужая почта'));
+      }
       return next(err);
     });
 };

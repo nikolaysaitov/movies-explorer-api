@@ -9,11 +9,7 @@ router.patch(
   celebrate({
     body: Joi.object().keys({
       name: Joi.string().required().min(2).max(30),
-      email: Joi.string()
-        .required()
-        .pattern(
-          /^https?:\/\/(www\.)?[a-zA-Z\d-]+\.[\w\d\-._~:/?#[\]@!$&'()*+,;=]{2,}#?$/,
-        ),
+      email: Joi.string().email().required(),
     }),
   }),
   updateUser,

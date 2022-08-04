@@ -9,7 +9,7 @@ const {
 router.get('/movies', getMovies); // возвращает все сохранённые текущим  пользователем фильмы
 
 router.post(
-  'movies',
+  '/movies',
   celebrate({
     body: Joi.object().keys({
       country: Joi.string().required(),
@@ -32,8 +32,7 @@ router.post(
         .pattern(
           /^(https?:\/\/(www\.)?([a-zA-z0-9-]{1}[a-zA-z0-9-]*\.?)*\.{1}([a-zA-z0-9]){2,8}(\/?([a-zA-z0-9-])*\/?)*\/?([-._~:?#[]@!\$&'\(\)\*\+,;=])*)/,
         ),
-      owner: Joi.required(),
-      movieId: Joi.required(),
+      movieId: Joi.number().required(),
       nameRU: Joi.string().required(),
       nameEN: Joi.string().required(),
     }),
@@ -42,10 +41,10 @@ router.post(
 ); // создаёт фильм с переданными в теле /.... movieId
 
 router.delete(
-  '/movies/_id',
+  '/movies/:_id',
   celebrate({
     params: Joi.object().keys({
-      movieId: Joi.string().required().hex().length(24),
+      _id: Joi.string().required().hex().length(24),
     }),
   }),
   deleteMovie,

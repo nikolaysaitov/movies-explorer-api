@@ -40,10 +40,10 @@ module.exports.createMovie = (req, res, next) => {
     image,
     trailerLink,
     thumbnail,
-    owner,
     movieId,
     nameRU,
     nameEN,
+    owner,
   })
     .then((movie) => res.status(201).send(movie))
     .catch((err) => {
@@ -56,7 +56,7 @@ module.exports.createMovie = (req, res, next) => {
 
 // DELETE /cards/:cardId — удаляет карточку по идентификатору
 module.exports.deleteMovie = (req, res, next) => {
-  Movie.findById(req.params.id)
+  Movie.findById(req.params._id)
     .then((movie) => {
       if (!movie) {
         throw new NotFoundError('Фильм отсутствует');
