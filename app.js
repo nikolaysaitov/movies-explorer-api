@@ -8,7 +8,7 @@ const bodyParser = require('body-parser');
 const { errors } = require('celebrate');
 const helmet = require('helmet');
 const cookieParser = require('cookie-parser');
-const { dataBase } = require('./utils/constants');
+const { DATA_BASE } = require('./utils/constants');
 const cors = require('./middlewares/cors');
 const routes = require('./routes/index');
 const NotFoundError = require('./errors/not-found-err_404');
@@ -16,7 +16,7 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const app = express();
 // подключаемся к серверу mongo
-mongoose.connect(dataBase);
+mongoose.connect(DATA_BASE);
 // подключаем мидлвары, роуты и всё остальное...
 app.use(helmet());
 app.use(bodyParser.json());
