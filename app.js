@@ -1,7 +1,6 @@
 // app.js — входной файл
 require('dotenv').config();
 const express = require('express');
-
 const { PORT = 3000 } = process.env;
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
@@ -23,7 +22,6 @@ app.use(bodyParser.json());
 app.use(cors);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
-
 app.use(requestLogger); // подключаем логгерзапросов
 
 app.get('/crash-test', () => {
