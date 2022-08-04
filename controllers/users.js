@@ -5,7 +5,7 @@ const AuthError = require('../errors/authorisation_error_401');
 const ConflictError = require('../errors/conflict_409');
 const NotFoundError = require('../errors/not-found-err_404');
 const ValidError = require('../errors/validation_error_400');
-const { JWT_SECRET } = require('../utils/constants');
+
 // GET /users/me - возвращает информацию о текущем пользователе
 module.exports.getUserInfo = (req, res, next) => {
   User.findById(req.user._id)
@@ -93,7 +93,7 @@ module.exports.login = (req, res, next) => {
       }
       const token = jwt.sign(
         { _id: user._id },
-        'JWT_SECRET',
+        'some-secret-key',
         { expiresIn: '7d' },
       );
       return res.send({ token });
