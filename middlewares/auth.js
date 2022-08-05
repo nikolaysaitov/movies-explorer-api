@@ -4,7 +4,6 @@ const { secretKey } = require('../utils/constants');
 
 module.exports = (req, res, next) => {
   const { authorization } = req.headers;
-  // const { JWT_SECRET = 'some-secret-key' } = process.env;
 
   if (!authorization || !authorization.startsWith('Bearer')) {
     return next(new AuthorisationError('Необходима авторизация'));
