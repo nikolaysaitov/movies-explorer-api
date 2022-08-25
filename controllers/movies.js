@@ -4,12 +4,20 @@ const ForbiddenError = require('../errors/forbidden_403');
 const NotFoundError = require('../errors/not-found-err_404');
 
 // GET /cards — возвращает все карточки
+// module.exports.getMovies = (req, res, next) => {
+//   const owner = req.user._id;
+//   Movie.find({ owner })
+//     .then((movies) => res.send({
+//       data: movies,
+//     }))
+//     .catch((err) => {
+//       next(err);
+//     });
+// };
 module.exports.getMovies = (req, res, next) => {
   const owner = req.user._id;
   Movie.find({ owner })
-    .then((movies) => res.send({
-      data: movies,
-    }))
+    .then((films) => res.send(films))
     .catch((err) => {
       next(err);
     });
@@ -55,16 +63,32 @@ module.exports.createMovie = (req, res, next) => {
 };
 
 // DELETE /cards/:cardId — удаляет карточку по идентификатору
+// module.exports.deleteMovie = (req, res, next) => {
+//   Movie.findById(req.params._id)
+//     .then((movie) => {
+//       if (!movie) {
+//         throw new NotFoundError('Фильм отсутствует');
+//       }
+//       if (movie.owner.toString() !== req.user._id) {
+//         throw new ForbiddenError('Это чужой фильм, его нельзя удалить');
+//       } else {
+//         return movie.remove()
+//           .then(() => res.send({
+//             message: 'Фильм удален',
+//           }));
+//       }
+//     }).catch(next);
+// };
 module.exports.deleteMovie = (req, res, next) => {
   Movie.findById(req.params._id)
-    .then((movie) => {
-      if (!movie) {
+    .then((film) => {
+      if (!film) {
         throw new NotFoundError('Фильм отсутствует');
       }
-      if (movie.owner.toString() !== req.user._id) {
+      if (film.owner.toString() !== req.user._id) {
         throw new ForbiddenError('Это чужой фильм, его нельзя удалить');
       } else {
-        return movie.remove()
+        return film.remove()
           .then(() => res.send({
             message: 'Фильм удален',
           }));
