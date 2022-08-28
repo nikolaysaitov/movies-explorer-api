@@ -1,8 +1,8 @@
 const allowedCors = [
   'https://kino.nomoredomains.sbs',
   'http://kino.nomoredomains.sbs',
-  'localhost:3000',
-  'http://localhost:3000',
+  'localhost:3001',
+  'http://localhost:3001',
 ];
 
 // eslint-disable-next-line consistent-return
