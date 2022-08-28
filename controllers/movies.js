@@ -53,7 +53,7 @@ module.exports.createMovie = (req, res, next) => {
     nameEN,
     owner,
   })
-    .then((movie) => res.status(201).send(movie))
+    .then((film) => res.status(201).send(film))
     .catch((err) => {
       if (err.name === 'ValidationError') {
         return next(new ValidError('Введены некорректные данные'));
