@@ -1,6 +1,6 @@
 const allowedCors = [
-  'https://kino.nomoredomains.sbs',
-  'http://kino.nomoredomains.sbs',
+  'https://nikolaysaitovmoviesfrontend.herokuapp.com',
+  'http://nikolaysaitovmoviesfrontend.herokuapp.com',
   'localhost:3001',
   'http://localhost:3001',
 ];
